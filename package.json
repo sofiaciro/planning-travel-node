@@ -1,0 +1,32 @@
+{
+  "name": "planning_travel_node",
+  "version": "1.0.0",
+  "description": "proyecto formativo planning travel desarrollado en node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sofiaciro/planning-travel-node.git"
+  },
+  "keywords": [
+    "Adso",
+    "node",
+    "planningTravel",
+    "sena"
+  ],
+  "author": "AndresM9901, sofiaciro, DavidCwork, felipe2131",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sofiaciro/planning-travel-node/issues"
+  },
+  "homepage": "https://github.com/sofiaciro/planning-travel-node#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "mongoose": "^8.6.1",
+    "morgan": "^1.10.0"
+  }
+}
