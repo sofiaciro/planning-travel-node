@@ -36,7 +36,8 @@ const schemaUsuario = new conexion.Schema({
         type: String,
     },
     favoritos: [favoritos],
-})
+},{
+versionKey: false})
 
 const modeloUsuarios = conexion.model("usuarios", schemaUsuario);
 module.exports = modeloUsuarios;
