@@ -72,7 +72,8 @@ const schemaHotel = new conexion.Schema({
         type: String,
         required: [true, 'No existe imagen o ruta por defecto'],
     },
-})
+}{
+versionKey: false})
 
 const modeloHoteles = conexion.model("hoteles", schemaHotel);
 module.exports = modeloHoteles;
