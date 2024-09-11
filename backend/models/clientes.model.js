@@ -7,7 +7,6 @@ const favoritos = new mongoose.Schema({
         ref: "hotel"
     }
 })
-
 const schemaCliente = new conexion.Schema({
     nombre: {
         type: String,
