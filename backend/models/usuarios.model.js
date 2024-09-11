@@ -17,7 +17,8 @@ const schemaUsuario = new conexion.Schema({
         enum: ['cliente', 'dueño'],
         default: 'cliente'
     }
-})
+},{
+versionKey: false})
 
-const modeloUsuario = conexion.model("usuario", schemaUsuario);
-module.exports = modeloUsuario;
+const modeloUsuarios = conexion.model("usuarios", schemaUsuario);
+module.exports = modeloUsuarios;

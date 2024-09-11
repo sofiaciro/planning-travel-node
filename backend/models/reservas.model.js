@@ -37,7 +37,8 @@ const schemaReserva = new conexion.Schema({
         required: [true, 'El precio de la reserva es obligatorio'],
         minLength: 0,
     },
-})
+},{
+versionKey: false})
 
 const modeloReservas = conexion.model("reservas", schemaReserva);
 module.exports = modeloReservas;

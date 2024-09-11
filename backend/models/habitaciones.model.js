@@ -37,7 +37,8 @@ const schemaHabitacion = new conexion.Schema({
         required: [true, 'El precio de la habitacion es obligatorio'],
         minLength: 0,
     },
-})
+},{
+versionKey: false})
 
 const modeloHabitaciones = conexion.model("habitaciones", schemaHabitacion);
 module.exports = modeloHabitaciones;

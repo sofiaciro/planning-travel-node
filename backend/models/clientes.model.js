@@ -14,21 +14,6 @@ const schemaCliente = new conexion.Schema({
         trim: true,
         required: [true, 'el nombre es obligatorio'],
     },
-    email: {
-        type: String,
-        required: [true, 'El correo es obligatorio'],
-        trim: true,
-        unique: [true, 'el correo ya existe'],
-    },
-    password: {
-        type: String,
-        required: [true, 'la contraseña es obligatoria']
-    },
-    rol: {
-        type: String,
-        enum: ['cliente', 'dueño'],
-        default: 'cliente'
-    },
     telefono:{
         type: Number,
     },
@@ -36,7 +21,10 @@ const schemaCliente = new conexion.Schema({
         type: String,
     },
     favoritos: [favoritos],
+},{
+    versionKey: false
 })
+
 
 const modeloClientes = conexion.model("clientes", schemaCliente);
 module.exports = modeloClientes;
