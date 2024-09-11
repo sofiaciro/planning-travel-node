@@ -1,29 +1,52 @@
-<nav class="navbar navbar-expand-sm">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Logo</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/index">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/catalogo">Catalogo</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/inventario">inventario</a>
-          </li>
-          <li class="nav-item">
-            <a class="btn btn-outline-primary" href="/carrito">Carrito <i class="bi bi-cart3"></i></a>
-          </li>
-        </ul>
-      </div>
-  
+<nav class="nav-bar">
+    <div class="nav-bar-left">
+        <div>
+            <a class="navbar-brand logo" href="#">
+                <i class="bi bi-globe-americas"></i> Planning Travel
+            </a>
+        </div>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
     </div>
+    <div class="responsive-bar">
+        <div class="search-bar d-flex">
+            <form action="#" role="search" class="d-flex align-items-center">
+                <input
+                class="input-search"
+                placeholder="¿Dónde quieres ir?"
+                type="text"
+                name="nombre"
+            />
+            <button class="btn-search"><i class="bi bi-search"></i></button>
+            </form>
+        </div>
+        <div class="nav-bar-btns btn-dropdown d-flex">
+            <a href="/dueno_hoy"  class="btn-publicar">Hazte anfitrión</a>
+            <div class="btn-profile d-flex">
+                <div>
+                    <i class="bi bi-list"></i>
+                </div>
+                <div style="width: 35px; height: 35px; border-radius: 50%; background-color: black; color: white; display: flex; justify-content: center; align-items: center;">
+                                    <p style="margin: 0;font-size: 14px;"></p>
+                                </div>
+                <div>
+                    <i class="bi bi-person-circle"></i>
+                </div>      
+            </div>
+                <ul class="dropdown-user">
+                <li class="dropdown-elemento"><a href="#">Ver perfil</a></li>
+                <li class="dropdown-elemento"><a href="#">Ver favoritos</a></li>
+                <li class="dropdown-elemento"><a href="#">Ver reservas</a></li>
+                <li class="dropdown-elemento"><a href="#" class="btn-secondary">Modo admin</a></li>
+                <li class="dropdown-elemento"><a href="#">Cerrar Sesión</a></li>
+            </ul>
+            <ul class="dropdown-user">
+                <li class="dropdown-elemento"><a href="#">Iniciar Sesion</a></li>
+                <li class="dropdown-elemento"><a href="#">Registrarse</a></li>
+            </ul>
+        </div>
     </div>
-  </nav>
+</nav>
