@@ -1,19 +1,7 @@
 const mongoose =  require('mongoose')
 const conexion = require("../config/database");
-const favoritos = new mongoose.Schema({
-    hotelID: {
-        type: mongoose.SchemaTypes.ObjectId,
-        required: [true, 'El ID del hotel es obligatorio'],
-        ref: "hotel"
-    }
-})
 
 const schemaUsuario = new conexion.Schema({
-    nombre: {
-        type: String,
-        trim: true,
-        required: [true, 'el nombre es obligatorio'],
-    },
     email: {
         type: String,
         required: [true, 'El correo es obligatorio'],
@@ -28,15 +16,8 @@ const schemaUsuario = new conexion.Schema({
         type: String,
         enum: ['cliente', 'dueño'],
         default: 'cliente'
-    },
-    telefono:{
-        type: Number,
-    },
-    fotoPerfil: {
-        type: String,
-    },
-    favoritos: [favoritos],
+    }
 })
 
-const modeloUsuarios = conexion.model("usuarios", schemaUsuario);
-module.exports = modeloUsuarios;
+const modeloUsuario = conexion.model("usuario", schemaUsuario);
+module.exports = modeloUsuario;
