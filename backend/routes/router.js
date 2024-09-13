@@ -13,6 +13,14 @@ route.get("/index", async (req, res) => {
     const hoteles = await controllerHoteles.hotelListar()
     res.render('pages/index', { hoteles });
 });
+// Hoteles
+route.get('/hoteles', async (req, res) => {
+    const hoteles = await controllerHoteles.hotelListar()
+    res.render('pages/hotel/hoteles', { hoteles });
+}); 
+route.post('/hoteles', controllerHoteles.crearHotel);
+route.delete('/hoteles/:id', controllerHoteles.eliminarHotel);
+route.post('/hoteles/:id', controllerHoteles.actualizarHoteles);
 // Dueño
 route.get("/duenoHoy", function (req, res) {
     console.log(path.__dirname);
@@ -42,10 +50,6 @@ route.get("/usuario", async (req, res) => {
     console.log(path.__dirname);
     res.render('pages/index', { listadoUsuarios });
 });
-// Hoteles
-route.get('/hoteles', controllerHoteles.hotelListar); // Verifica que controllerHoteles.hotelListar esté definido
-route.post('/hoteles', controllerHoteles.crearHotel); // Verifica que controllerHoteles.crearHotel esté definido
-route.delete('/hoteles/:id', controllerHoteles.eliminarHotel);
 
 
 module.exports = route;

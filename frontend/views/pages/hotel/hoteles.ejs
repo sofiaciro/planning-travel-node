@@ -2,12 +2,12 @@
 <html lang="es">
 
 <head>
-    <%- include('../partials/head') %>
+    <%- include('../../partials/head') %>
 </head>
 
 <body>
     <header>
-        <%- include('../partials/header') %>
+        <%- include('../../partials/header') %>
     </header>
     
     <main class="mx-5">
@@ -22,7 +22,7 @@
                     <th>Categoría</th>
                     <th>Ciudad</th>
                     <th>Servicios</th>
-                    <th>Opiniones</th>
+                    <th>Fotos</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -54,17 +54,10 @@
                                     <% }); %>
                             </td>
                             <td>
-                                <% hotel.opiniones.forEach(function(opinion) { %>
-                                    <p>
-                                        <%= opinion.contenido %>
-                                        <strong>
-                                         Estrellas :  <%= opinion.puntuacion %>   
-                                        </strong>
-                                    </p> 
-                                    <% }); %>
+                                <%= hotel.fotos %>
                             </td>
                             <td>
-                                <button data-bs-toggle="modal" data-bs-target="#editModal" class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
+                                <button data-bs-toggle="modal" data-bs-target="#editarHotel<%= hotel._id %>" class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
 						        <button data-bs-toggle="modal" data-bs-target="#eliminarHotel<%= hotel._id %>" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                             </td>
                             
@@ -85,11 +78,11 @@
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Crear Hotel</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="/hoteles" method="post">
+                <form action="/hoteles/" method="post">
                     <div class="modal-body">
                         <!-- Nombre -->
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="nombre" placeholder="Nombre del Hotel" name="nombre" required>
+                            <input type="text" class="form-control" id="nombre" placeholder="Nombre del Hotel" name="nombre" required> 
                             <label for="nombre">Nombre del Hotel</label>
                         </div>
     
@@ -120,12 +113,11 @@
                         <!-- Servicios -->
                         <div class="mb-3">
                             <label for="servicios" class="form-label">Servicios</label>
-                            <select class="form-select" id="servicios" name="servicios[]" multiple required>
+                            <select class="form-select" id="servicios" name="servicios" multiple required>
                                 <option value="WiFi">WiFi</option>
                                 <option value="Piscina">Piscina</option>
                                 <option value="Restaurante">Restaurante</option>
                                 <option value="Spa">Spa</option>
-                                <!-- Puedes agregar más opciones de servicios aquí -->
                             </select>
                             <small class="form-text text-muted">Mantén presionada la tecla Ctrl (Cmd en Mac) para seleccionar múltiples opciones.</small>
                         </div>
@@ -151,7 +143,64 @@
         </div>
     </div>
     <footer>
-        <%- include('../partials/footer') %>
+        <% hoteles.forEach((hotel) => { %>
+			<div class="modal fade" id="editarHotel<%= hotel._id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Hotel</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<form action="/hoteles/<%= hotel._id %>" method="post" >
+							<div class="modal-body">
+								<div class="form-floating mb-3">
+									<input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre" value="<%= hotel.nombre %>">
+									<label for="nombre">Nombre Hotel</label>
+								</div>
+								<div class="form-floating mb-3">
+									<input type="text" class="form-control" id="descripcion" placeholder="Descripcion" name="descripcion" value="<%= hotel.descripcion %>">
+									<label for="descripcion">Descripcion</label>
+								</div>
+								<div class="form-floating mb-3">
+									<input type="text" class="form-control" id="direccion" placeholder="direccion" name="direccion" value="<%= hotel.direccion %>">
+									<label for="direccion">Direccion</label>
+								</div>
+                                <div>
+                                    <strong><p class="text-center"> Categoria </p></strong>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="categoria" placeholder="Categoria" name="nombreCategoria" value="<%= hotel.categoria.nombre %>">
+                                        <label for="categoria">Nombre categoria</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="Categoria" placeholder="Categoria" name="descripcionCategoria" value="<%= hotel.categoria.descripcion %>">
+                                        <label for="categoria">Descripcion categoria</label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="servicios" class="form-label">Servicios</label>
+                                    <select class="form-select" id="servicios" name="servicios" multiple required>
+                                        <option value="WiFi">WiFi</option>
+                                        <option value="Piscina">Piscina</option>
+                                        <option value="Restaurante">Restaurante</option>
+                                        <option value="Spa">Spa</option>
+                                    </select>
+                                    <small class="form-text text-muted">Mantén presionada la tecla Ctrl (Cmd en Mac) para seleccionar múltiples opciones.</small>
+                                </div>
+								<div class="form-floating mb-3">
+									<input type="text" class="form-control" id="imagen" placeholder="Imagen" name="imagen" value="<%= hotel.fotos %>">
+									<label for="imagen">Imagen</label>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+								<button type="submit" class="btn btn-primary">Guadar cambios</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		<% }) %>
+        
         <% hoteles.forEach((hotel)=> { %>
 			<div class="modal fade" id="eliminarHotel<%= hotel._id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
@@ -171,6 +220,7 @@
 				</div>
 			</div>
 		<% }) %>
+        <%- include('../../partials/footer') %>
     </footer>
 </body>
 <script>
