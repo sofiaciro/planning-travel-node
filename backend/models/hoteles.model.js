@@ -34,7 +34,7 @@ const opiniones = new mongoose.Schema({
         type: Date,
         default: Date(),
     },
-    puntucion:{
+    puntuacion:{
         type: Number,
         maxLength: [5, 'La puntuación debe ser como máximo 5.'],
         minLength: [1, 'La puntuación debe ser como mínimo 1.'],

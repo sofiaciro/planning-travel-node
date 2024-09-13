@@ -1,11 +1,35 @@
 <!DOCTYPE html>
+<html lang="en">
+    
 <head>
-    <%- include('../partials/header') %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include('../partials/head'); %>
 </head>
 <body>
-    <button class="btn btn-primary">hola</button>
-    <%- include('../partials/head') %>
-    <footer>
-        <%- include('../partials/footer') %>
-    </footer>
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                <img src="" class="card-img-top" alt="">
+                <div class="card-body">
+                    <h5 class="card-title"> xx </h5>
+                    <p class="card-text">  xx </p>
+                    <p class="card-text"><strong>Precio: </strong> xxxx </p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary">Reservar</a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+</html>

@@ -1,5 +1,5 @@
 const mongoose =  require('mongoose')
-const conexion = require("../config/connection");
+const conexion = require('../config/connection')
 const favoritos = new mongoose.Schema({
     hotelID: {
         type: mongoose.SchemaTypes.ObjectId,
