@@ -1,5 +1,5 @@
 const express = require('express');
-const controllerHoteles = require('../controller/hoteles.controlller'); 
+const controllerHoteles = require('../controller/hoteles.controller'); 
 const controllerClientes = require('../controller/clientes.controller'); 
 const controllerHabitaciones = require('../controller/habitaciones.controller');
 const controllerReservas = require('../controller/reservas.controller');
