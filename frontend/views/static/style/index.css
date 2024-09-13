@@ -1,0 +1,17 @@
+.contenido {
+    margin: 10px;
+}
+
+.botones-carta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.btn-reservar{
+    background:#ffc107;
+}
+.btn-reservar:hover{
+    background:white;
+    border: solid 1px #ffc107 ;
+    color:#ffbf00
+}
