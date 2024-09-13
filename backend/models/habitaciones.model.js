@@ -1,5 +1,5 @@
 const mongoose =  require('mongoose')
-const conexion = require("../config/database");
+const conexion = require("../config/connection");
 
 const schemaHabitacion = new conexion.Schema({
     hotelId: {
