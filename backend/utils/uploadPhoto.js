@@ -46,3 +46,5 @@ async function guardarHotelConFotos(datosHotel, files) {
 		console.log(`Error guardando el hotel en MongoDB: ${error}`);
 	}
 }
+
+module.exports = { subirImagen, manejarSubidaDeImagenes, guardarHotelConFotos };

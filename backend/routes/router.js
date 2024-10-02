@@ -9,6 +9,7 @@ const uploadPhoto = require('../utils/uploadPhoto');
 const multer = require('multer');
 //const stripe = require("stripe")(process.env.STRIPEKEY);
 const route = express.Router();
+const upload = multer();
 
 // Index
 route.get("/index", async (req, res) => {
@@ -20,7 +21,7 @@ route.get('/hoteles', async (req, res) => {
     const hoteles = await controllerHoteles.hotelListar()
     res.render('pages/hotel/hoteles', { hoteles });
 }); 
-route.post('/hoteles', controllerHoteles.crearHotel);
+route.post('/hoteles', upload.array('fotos'), controllerHoteles.crearHotel);
 route.delete('/hoteles/:id', controllerHoteles.eliminarHotel);
 route.post('/hoteles/:id', controllerHoteles.actualizarHoteles);
 // Dueño

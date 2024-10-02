@@ -1,6 +1,7 @@
 const modeloHoteles = require("../models/hoteles.model");
 const mongoose = require('mongoose');
 const usuarioPorDefecto = new mongoose.Types.ObjectId('66e398dffde980cb2fdef0f6');
+const uploadPhoto = require('../utils/uploadPhoto');
 
 exports.hotelListar = async (req, res) => {
     const listadoHoteles = await modeloHoteles.find();
@@ -8,7 +9,6 @@ exports.hotelListar = async (req, res) => {
 };
 exports.crearHotel = async (req, res) => {
     const { nombre, descripcion, direccion, categoria, ciudad, servicios, opiniones, foto } = req.body;
-    
 
     const nuevoHotel = new modeloHoteles({
         nombre,
@@ -16,7 +16,7 @@ exports.crearHotel = async (req, res) => {
         direccion,
         categoria: {
             nombre: categoria,
-            descripcion: 'Descripción de la categoría'  
+            descripcion: 'Descripción de la categoría'
         },
         ciudad,
         servicios: servicios ? servicios.map(servicio => ({ nombre: servicio })) : [],
@@ -94,3 +94,4 @@ exports.eliminarHotel = async (req, res) => {
         res.status(500).send('Error al eliminar el hotel.');
     }
 };
+
