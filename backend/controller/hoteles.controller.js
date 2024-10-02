@@ -4,7 +4,7 @@ const usuarioPorDefecto = new mongoose.Types.ObjectId('66e398dffde980cb2fdef0f6'
 
 exports.hotelListar = async (req, res) => {
     const listadoHoteles = await modeloHoteles.find();
-    res.render('pages/hoteles', { hoteles: listadoHoteles });
+    return listadoHoteles
 };
 exports.crearHotel = async (req, res) => {
     const { nombre, descripcion, direccion, categoria, ciudad, servicios, opiniones, foto } = req.body;
