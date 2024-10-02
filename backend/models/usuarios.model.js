@@ -6,11 +6,11 @@ const schemaUsuario = new conexion.Schema({
         type: String,
         required: [true, 'El correo es obligatorio'],
         trim: true,
-        unique: [true, 'el correo ya existe'],
+        unique: [true, 'El correo ya existe'],
     },
     password: {
         type: String,
-        required: [true, 'la contraseña es obligatoria']
+        required: [true, 'La contraseña es obligatoria']
     },
     rol: {
         type: String,

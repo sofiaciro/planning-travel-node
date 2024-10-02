@@ -7,17 +7,17 @@ const schemaHabitacion = new conexion.Schema({
         required: [true, 'El ID del hotel es obligatorio'],
         ref: "hotel"
     },
-    numeroHabiitacion: {
+    numeroHabitacion: {
         type: Number,
-        required: [true, 'El numero de la habitacion es obligatorio'],
+        required: [true, 'El numero de la habitación es obligatorio'],
         trim: true,
         maxLength: 5,
         minLength: 1,
     },
     estadoHabitacion: {
         type: String,
-        enum:['reservado','pagado','cancelado','finalizado'],
-        default: 'reservado',
+        enum:['reservado','pagado','cancelado','finalizado','libre'],
+        default: 'libre',
     },
     capacidadHuesped: {
         type: Number,
@@ -26,15 +26,15 @@ const schemaHabitacion = new conexion.Schema({
     },
     tipoHabitacion:{
         type: String,
-        required: [true, 'El tipo de habitacion es obligatorio'],
+        required: [true, 'El tipo de habitación es obligatorio'],
     },
     comodidades: {
         type: String,
-        required: [true, 'Las comodidades de la habitacion son obligatirias'],
+        required: [true, 'Las comodidades de la habitación son obligatorias'],
     },
     precio: {
         type: Number,
-        required: [true, 'El precio de la habitacion es obligatorio'],
+        required: [true, 'El precio de la habitación es obligatorio'],
         minLength: 0,
     },
 },{

@@ -8,9 +8,9 @@ const categoria = new mongoose.Schema({
     },
     descripcion:{
         type: String,
-        required: [true, 'La descripcion de la categoria es obligatoria'],
+        required: [true, 'La descripción de la categoria es obligatoria'],
         trim: true,
-        maxLength: [150, 'la descripcion es muy extensa'],
+        maxLength: [150, 'la descripción es muy extensa'],
     }
 })
 const servicios = new mongoose.Schema({
@@ -49,14 +49,14 @@ const schemaHotel = new conexion.Schema({
     },
     descripcion: {
         type: String,
-        required: [true, 'La descripcion del hotel es obligatoria'],
+        required: [true, 'La descripción del hotel es obligatoria'],
         trim: true,
-        maxLength: [150, 'la descripcion es muy extensa'],
+        maxLength: [150, 'la descripción es muy extensa'],
     },
     direccion: {
         type: String,
         trim: true,
-        required: [true, 'La direccion del hotel es obligatoria'],
+        required: [true, 'La dirección del hotel es obligatoria'],
     },
     categoria: {
         type: categoria,

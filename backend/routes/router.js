@@ -20,10 +20,14 @@ route.get('/hoteles', async (req, res) => {
 }); 
 route.post('/hoteles', controllerHoteles.crearHotel);
 route.delete('/hoteles/:id', controllerHoteles.eliminarHotel);
+route.get('/hotel/:id', controllerHoteles.hotelEncontrado);
 route.post('/hoteles/:id', controllerHoteles.actualizarHoteles);
+// Detalle Hotel
+route.get('/detalle_hotel', async (req, res)=>{
+    await res.render('pages/hotel/detalle_hotel');
+}); 
 // Dueño
 route.get("/duenoHoy", function (req, res) {
-    console.log(path.__dirname);
     res.render('pages/hotel/dueno/duenoHoy');
 });
 //Cliente

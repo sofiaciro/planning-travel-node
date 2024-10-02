@@ -37,7 +37,13 @@ exports.crearHotel = async (req, res) => {
         res.status(500).send('Error al crear el hotel.');
     }
 };
-
+exports.hotelEncontrado = async (req, res) => {
+    let id = await modeloHoteles.findOne( req.params );
+    if (id)
+        return id
+    else
+        res.status(404).json({ "error": "Hotel no encontrado" });
+};
 exports.actualizarHoteles = async (req, res) => {
     let servicios = req.body.servicios;
     if (!Array.isArray(servicios)) {

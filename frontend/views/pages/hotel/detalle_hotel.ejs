@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include('../../partials/head') %>
+</head>
+<body>
+    <%- include('../../partials/header') %>
+    <form action="/detalle_hotel/<%= hotel._id %>" method="get">
+        <img src="" alt="">
+        <input value="<%= hotel.nombre %>">nombre</input>
+        <p>servicios</p>
+        <p>direccion</p>
+        <p>ciudad</p>
+    </form>
+</body>
+<footer>
+    <%- include('../../partials/footer') %>
+</footer>
+</html>

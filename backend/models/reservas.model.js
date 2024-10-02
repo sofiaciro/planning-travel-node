@@ -4,7 +4,7 @@ const conexion = require("../config/connection");
 const schemaReserva = new conexion.Schema({
     habitacionId: {
         type: mongoose.SchemaTypes.ObjectId,
-        required: [true, 'El ID de la habitacion es obligatorio'],
+        required: [true, 'El ID de la habitación es obligatorio'],
         ref: "habitacion"
     },
     usuario: {
