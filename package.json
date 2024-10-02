@@ -26,6 +26,7 @@
   "homepage": "https://github.com/sofiaciro/planning-travel-node#readme",
   "dependencies": {
     "@supabase/supabase-js": "^2.45.4",
+    "bootstrap": "^5.3.3",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.19.2",

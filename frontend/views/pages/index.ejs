@@ -1,4 +1,38 @@
-<form action="/upload" method="post" enctype="multipart/form-data">
-	<input type="file" name="foto" id="foto">
-	<button type="submit">Enviar</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="/style/index.css">
+</head>
+<body>
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+    <main class="container" style="margin-top: 20px;display: flex;flex-direction: row;
+    flex-wrap: wrap;">
+        <% hoteles.forEach((hoteles)=> {%>
+        <div class="row contenido">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                <img src="" class="card-img-top" alt="">
+                <div class="card-body">
+                    <h5 class="card-title"><%= hoteles.nombre %></h5>
+                    <p class="card-text"><%= hoteles.descripcion %></p>
+                </div>
+                <div class="card-footer botones-carta" >
+                    <a href="#" class="btn btn-primary">ver detalles</a>
+                    <a href="#" class="btn btn-reservar">Reservar</a>
+                </div>
+                </div>
+            </div>
+        </div>
+        <%})%>
+    </main>
+</body>
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+</html>

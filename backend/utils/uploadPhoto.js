@@ -6,55 +6,43 @@ const express = require('express');
 const multer = require('multer');
 const mongoose = require('mongoose');
 
-// Configura Multer para almacenar archivos en un directorio temporal
-
-
-async function uploadPhoto(req, res) {
-	//const fileName = path.basename(filePath);
-	const filePath = path.join(__dirname, 'temp', req.file.filename);
-	console.log(`ruta ${filePath}`);
-	const file = fs.createReadStream(filePath);
-	
-	// Subir el archivo a Supabase
-	const { data, error } = await supabase
-	  .storage
-	  .from('photos') // Nombre del bucket en Supabase
-	  .upload(req.file.filename, file, {
-		cacheControl: '3600',
-		upsert: true
-	  });
+async function subirImagen(file) {
+	const { data, error } = await supabase.storage.from('imagenes').upload(`imagenes/${file.name}`, file);
   
 	if (error) {
-	  return res.status(500).json({ error: error.message });
+		console.error('Error subiendo la imagen:', error);
+		return null;
 	}
-/*
-	const { data, error } = await supabase
-		.storage
-		.from('photos')
-		.upload(fileName, file, {
-		cacheControl: '3600',
-		upsert: false
-		});
-
-	if (error) {
-		console.error('Error uploading file:', error.message);
-		return;
-	}
-*/
-	const { publicURL, error: urlError } = supabase
-		.storage
-		.from('photos')
-		.getPublicUrl(req.file.filename);
-
-	if (urlError) {
-		return res.status(500).json({ error: urlError.message });
-	}
-	fs.unlinkSync(filePath);
-	console.log('File uploaded successfully:', data, publicURL);
-	return {publicURL, data};
+  
+	const url = supabase.storage.from('imagenes').getPublicUrl(data.path).publicURL;
+	return url;
 }
 
-// Llama a la función con la ruta de la foto que deseas subir
-// uploadPhoto('./path/to/your/photo.jpg');
+async function manejarSubidaDeImagenes(files) {
+	const urls = [];
 
-module.exports = uploadPhoto;
+	for(const file of files) {
+		const url = await subirImagen(file);
+		if(url) {
+			urls.push(url);
+		}
+	}
+
+	return urls;
+}
+
+async function guardarHotelConFotos(datosHotel, files) {
+	const urlsFotos = await manejarSubidaDeImagenes(files);
+
+	const nuevoHotel = new datosHotel({
+		...datosHotel,
+		fotos: urlsFotos,
+	});
+
+	try {
+		const resultado = await nuevoHotel.save();
+		console.log(`Hotel guardado en MongoDB: ${resultado._id}`);
+	} catch (error) {
+		console.log(`Error guardando el hotel en MongoDB: ${error}`);
+	}
+}

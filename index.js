@@ -9,7 +9,7 @@ const app = express();
 app.use(logger('dev'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'frontend/views'));
-app.use(express.static(path.join(__dirname, 'frontend/views/assets')));
+app.use(express.static(path.join(__dirname, 'frontend/views/static')));
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());

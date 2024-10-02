@@ -1,5 +1,5 @@
 const mongoose =  require('mongoose')
-const conexion = require("../config/database");
+const conexion = require("../config/connection");
 const categoria = new mongoose.Schema({
     nombre:{
         type: String, 
@@ -34,7 +34,7 @@ const opiniones = new mongoose.Schema({
         type: Date,
         default: Date(),
     },
-    puntucion:{
+    puntuacion:{
         type: Number,
         maxLength: [5, 'La puntuación debe ser como máximo 5.'],
         minLength: [1, 'La puntuación debe ser como mínimo 1.'],
