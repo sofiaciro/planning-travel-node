@@ -13,6 +13,11 @@ route.get("/index", async (req, res) => {
     const hoteles = await controllerHoteles.hotelListar()
     res.render('pages/index', { hoteles });
 });
+// habitaciones
+route.get('/habitaciones', async (req, res) => {
+    const habitaciones = await controllerHabitaciones.habitacionListar()
+    res.render('pages/habitaciones', { habitaciones });
+}); 
 // Hoteles
 route.get('/hoteles', async (req, res) => {
     const hoteles = await controllerHoteles.hotelListar()

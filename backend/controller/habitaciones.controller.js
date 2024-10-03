@@ -1,6 +1,8 @@
-const modeloHabitaciones = require("../models/habitaciones.model")
+const modeloHabitaciones = require("../models/habitaciones.model");
+const modeloHoteles = require("../models/hoteles.model");
 exports.habitacionListar = async (req,res) =>{
-    let listadoHabitacion = await modeloHabitaciones.find();
+    let listadoHabitacion = await modeloHabitaciones.find({});
+   
     if(listadoHabitacion)
         return listadoHabitacion
     else

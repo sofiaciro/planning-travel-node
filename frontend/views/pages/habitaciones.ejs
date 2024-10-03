@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('../partials/head') %>
+    <style>
+        .dataTables_filter {
+          float: right !important; 
+        }
+      </style>
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/header') %>
+    </header>
+
+    <main class="mx-5">
+        <h2>Listado de Habitaciones</h2>
+        <table id="habitaciones" class="table table-striped" >
+            <thead>
+                <tr>
+                    <th>ID del Hotel</th>
+                    <th>Número de Habitación</th>
+                    <th>Estado de la Habitación</th>
+                    <th>Capacidad de Huéspedes</th>
+                    <th>Tipo de Habitación</th>
+                    <th>Comodidades</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% habitaciones.forEach((habitacion) => { %>
+                    <tr>
+                        <td><%= habitacion.hotelId %></td>
+                        <td><%= habitacion.numeroHabitacion %></td>
+                        <td><%= habitacion.estadoHabitacion %></td>
+                        <td><%= habitacion.capacidadHuesped %></td>
+                        <td><%= habitacion.tipoHabitacion %></td>
+                        <td><%= habitacion.comodidades %></td>
+                        <td><%= habitacion.precio %></td>
+                        <td> editar y eliminar</td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <%- include('../partials/footer') %>
+    </footer>
+</body>
+<script> 
+   new DataTable('#habitaciones', {
+    lengthChange: false, 
+}); 
+</script>
+</html>

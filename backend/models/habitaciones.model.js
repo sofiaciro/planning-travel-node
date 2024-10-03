@@ -7,7 +7,7 @@ const schemaHabitacion = new conexion.Schema({
         required: [true, 'El ID del hotel es obligatorio'],
         ref: "hotel"
     },
-    numeroHabiitacion: {
+    numeroHabitacion: {
         type: Number,
         required: [true, 'El numero de la habitacion es obligatorio'],
         trim: true,
@@ -30,7 +30,7 @@ const schemaHabitacion = new conexion.Schema({
     },
     comodidades: {
         type: String,
-        required: [true, 'Las comodidades de la habitacion son obligatirias'],
+        required: [true, 'Las comodidades de la habitacion son obligatorias'],
     },
     precio: {
         type: Number,
