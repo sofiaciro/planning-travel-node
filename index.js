@@ -1,4 +1,6 @@
 const express = require('express');
+const backup = require('./backend/config/backup');
+const cron = require('node-cron');
 const routes = require('./backend/routes/router');
 const logger = require('morgan');
 const path = require('path');
@@ -17,3 +19,7 @@ app.use(express.json());
 app.use('/', routes);
 
 app.listen(process.env.PORT);
+cron.schedule(' * * * * *', async()=> {
+    console.log('backup');
+    backup.backupDatabase()
+})
