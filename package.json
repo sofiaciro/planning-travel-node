@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
-    "start": "node index.js"
+    "start": "pm2 start index.js",
+    "stop": "pm2 stop all"
   },
   "repository": {
     "type": "git",
@@ -30,7 +31,8 @@
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "mongoose": "^8.6.1",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "pm2": "^5.4.2"
   },
   "devDependencies": {
     "nodemon": "^3.1.4"
